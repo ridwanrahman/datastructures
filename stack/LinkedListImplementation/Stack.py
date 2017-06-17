@@ -20,6 +20,19 @@ class Stack:
             self.head = newNode
             self.length +=1
 
+    def pop(self):
+        if self.head is None:
+            raise IndexError
+        else:
+            currentNode = self.head
+            self.head = self.head.getNext()
+            self.length -= 1
+    def peek(self):
+        if self.head is None:
+            raise IndexError
+        else:
+            return self.head.getData()
+
     def run(self):
         a = []
         a.append(self.head.getData())
@@ -27,7 +40,3 @@ class Stack:
             self.head = self.head.getNext()
             a.append(self.head.getData())
         print (a)
-
-
-
-# push, pop, peek
