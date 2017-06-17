@@ -21,6 +21,7 @@ class CircularLinkedList:
     def insertAtEnd(self, data):
         newNode = Node()
         newNode.setData(data)
+        newNode.setNext(newNode)
         if self.length==0:
             self.head = newNode
             newNode.setNext(self.head)
@@ -34,16 +35,14 @@ class CircularLinkedList:
             self.length+=1
 
     def insertAtFront(self,data):
+        newNode = Node()
+        newNode.setData(data)
+        newNode.setNext(newNode)
         if self.length==0:
-            newNode = Node()
-            newNode.setData(data)
             self.head = newNode
             newNode.setNext(self.head)
             self.length += 1
         else:
-            newNode = Node()
-            newNode.setData(data)
-            newNode.setNext(newNode)
             tempNode = self.head
             while tempNode.getNext() != self.head:
                 tempNode = tempNode.getNext()
@@ -51,6 +50,33 @@ class CircularLinkedList:
             newNode.setNext(self.head)
             self.head = newNode
             self.length+=1
+    def deleteLast(self):
+        if self.length==0:
+            raise ValueError("List is already empty")
+        else:
+            temp = self.head
+            currentNode = self.head
+            if currentNode.getNext() == self.head:
+                raise ValueError("list is empty")
+            while currentNode.getNext() != self.head:
+                temp = currentNode
+                currentNode = currentNode.getNext()
+            temp.setNext(currentNode.getNext())
+            self.length -= 1
+
+    def deleteFirst(self):
+        if self.length==0:
+            raise ValueError("List is already empty")
+        else:
+            currentNode =self.head
+            nextCurrentNode = currentNode.getNext()
+            if currentNode.getNext() == self.head:
+                raise ValueError("List is empty")
+            while currentNode.getNext() != self.head:
+                currentNode = currentNode.getNext()
+            currentNode.setNext(nextCurrentNode)
+            self.head = nextCurrentNode
+            self.length -= 1
 
     def printList(self):
         nodeList = []
@@ -61,8 +87,3 @@ class CircularLinkedList:
             nodeList.append(currentNode.getData())
             currentNode = currentNode.getNext()
         print (nodeList)
-
-
-
-
-
