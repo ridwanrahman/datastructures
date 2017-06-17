@@ -20,7 +20,6 @@ class LinkedList(object):
         currentNode.set_next(newNode)
 
     def insertAtPos(self, pos, node):
-        print (pos)
         newNode = node
         if pos > self.length or pos < 0:
             return None
@@ -82,7 +81,6 @@ class LinkedList(object):
         while currentnode != None:
             nodeList.append(currentnode.data)
             currentnode = currentnode.next
-
         print (nodeList)
 
     def listLenght(self):
