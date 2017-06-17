@@ -92,4 +92,3 @@ class LinkedList(object):
             count = count+1
             currentNode = currentNode.get_next()
         return count
-
