@@ -1,46 +1,49 @@
+from node import Node
 class LinkedList(object):
     def __init__(self):
         self.length = 0
         self.head = None
 
-    def addNode(self, node):
-        self.addBeg(node)
-
-    def addBeg(self, node):
-        newNode = node
-        newNode.next = self.head
+    def insertAtBeginning(self, data):
+        newNode = Node(data)
+        newNode.setNext(self.head)
         self.head = newNode
         self.length += 1
 
-    def addEnd(self, node):
-        newNode = node
-        currentNode = self.head
-        while currentNode.get_next() != None:
-            currentNode = currentNode.get_next()
-        currentNode.set_next(newNode)
+    def insertAtEnd(self, data):
+        newNode = Node(data)
+        if self.head == None:
+            raise ValueError("List is empty")
+        else:
+            currentNode = self.head
+            while currentNode.getNext()!=None:
+                currentNode = currentNode.getNext()
+            currentNode.setNext(newNode)
+            self.length+=1
 
-    def insertAtPos(self, pos, node):
-        newNode = node
+
+    def insertAtPos(self, pos, data):
+        newNode = Node(data)
         if pos > self.length or pos < 0:
-            return None
+            raise ValueError("Problem with entering valeu in the list")
         else:
             if pos == 0:
-                self.addBeg(node)
+                self.insertAtBeginning(data)
             else:
-                current = self.head
+                currentNode = self.head
                 count = 0
                 while count < pos - 1:
                     count += 1
-                    current = current.get_next()
-                newNode.set_next(current.get_next())
-                current.set_next(newNode)
+                    currentNode = currentNode.getNext()
+                newNode.setNext(currentNode.getNext())
+                currentNode.setNext(newNode)
                 self.length += 1
 
     def deleteFromBeginning(self):
         if self.length == 0:
             print ("The list is already empty")
         else:
-            self.head = self.head.get_next()
+            self.head = self.head.getNext()
             self.length -= 1
 
     def deleteLastNode(self):
@@ -49,12 +52,12 @@ class LinkedList(object):
         else:
             currentNode = self.head
             previousNode = self.head
-            while currentNode.get_next() != None:
+            while currentNode.getNext() != None:
                 previousNode = currentNode
-                currentNode = currentNode.get_next()
-            previousNode.set_next(None)
+                currentNode = currentNode.getNext()
+            previousNode.setNext(None)
             self.length -= 1
-    def deleteFromLinkedListWithNode(self, node):
+    def deleteFromLinkedListWithNode(self, data):
         if self.length == 0:
             raise ValueError("List is empty")
         else:
@@ -62,19 +65,19 @@ class LinkedList(object):
             previous = None
             found = False
             while not found:
-                if current == node:
+                if current.getData() == data:
                     print ("found")
                     found = True
                 elif current is None:
                     raise ValueError("Node not in linked list")
                 else:
                     previous = current
-                    current = current.get_next()
-
+                    current = current.getNext()
             if previous is None:
-                self.head = current.get_next()
+                self.head = current.getNext()
             else:
-                previous.set_next(current.get_next())
+                previous.setNext(current.getNext())
+                self.length -= 1
     def print_list(self):
         nodeList = []
         currentnode = self.head

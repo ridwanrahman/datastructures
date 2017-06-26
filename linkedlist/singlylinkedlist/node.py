@@ -4,17 +4,17 @@ class Node:
         self.data = data
         self.next = None
          # method for setting the data field of the node
-    def set_data(self, data):
+    def setData(self, data):
         self.data = data
     # method for getting the data field of the node
-    def get_data(self):
+    def getData(self):
         return self.data
       # method for setting the next field of the node
-    def set_next(self, next):
+    def setNext(self, next):
         self.next = next
        # method for getting the next field of the node
-    def get_next(self):
+    def getNext(self):
         return self.next
     # returns true if the node points to another node
-    def has_next(self):
+    def hasNext(self):
             return self.next != None
