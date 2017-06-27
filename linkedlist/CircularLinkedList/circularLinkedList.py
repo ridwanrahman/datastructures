@@ -50,6 +50,37 @@ class CircularLinkedList:
             newNode.setNext(self.head)
             self.head = newNode
             self.length+=1
+
+    def insertAtPos(self, pos, data):
+        if pos>self.length+1:
+            raise ValueError("input number too big")
+        newNode = Node()
+        newNode.setData(data)
+        newNode.setNext(newNode)
+        if self.length == 0:
+            self.head = newNode
+            newNode.setNext(self.head)
+            self.length += 1
+        else:
+            count = 1
+            found=False
+            currentNode = self.head
+            while not found:
+                if (pos==1):
+                    self.insertAtFront(data)
+                    found =True
+                elif(pos==self.length+1):
+                    self.insertAtEnd(data)
+                    found=True
+                elif(count == pos-1):
+                    newNode.setNext(currentNode.getNext())
+                    currentNode.setNext(newNode)
+                    self.length+=1
+                    found=True
+                else:
+                    currentNode = currentNode.getNext()
+                    count += 1
+
     def deleteLast(self):
         if self.length==0:
             raise ValueError("List is already empty")
@@ -81,6 +112,7 @@ class CircularLinkedList:
     def printList(self):
         nodeList = []
         currentNode =self.head
+
         nodeList.append(currentNode.getData())
         currentNode = currentNode.getNext()
         while currentNode != self.head:

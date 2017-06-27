@@ -94,6 +94,7 @@ class DoublyLinkedList:
     def printList(self):
         nodeList = []
         currentnode = self.head
+        print (currentnode)
         while currentnode != None:
             nodeList.append(currentnode.getData())
             currentnode = currentnode.next
