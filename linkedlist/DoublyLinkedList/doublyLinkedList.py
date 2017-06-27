@@ -68,7 +68,6 @@ class DoublyLinkedList:
             self.length -= 1
 
     def deleteFromPos(self, pos):
-
         if pos>self.length:
             raise ValueError("too big pos")
         elif pos == 0:
