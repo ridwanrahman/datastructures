@@ -99,9 +99,9 @@ class LinkedList(object):
     def listLenght(self):
         currentNode = self.head
         count = 1
-        while currentNode.get_next()!=None:
+        while currentNode.getNext()!=None:
             count = count+1
-            currentNode = currentNode.get_next()
+            currentNode = currentNode.getNext()
         return count
     def problem1(self, number):
         count=0
