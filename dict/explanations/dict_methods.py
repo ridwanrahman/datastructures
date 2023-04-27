@@ -39,7 +39,30 @@ def search_dict(dict, value):
 search_dict(my_dict, "uno")
 
 # Deleting an item from dict
+# deleting items from dict is O(1) time complexity usually but 
+# O(n) in amortized worst case
+my_dict = {"one": "uno", "two": "dos"}
 
-    
+my_dict.pop('one')
 
+# removes a random element
+my_dict.popitem()
 
+my_dict.clear()
+
+del my_dict['one']
+
+del my_dict
+
+# Dictionary methods
+my_dict = {"one": "uno", "two": "dos"}
+
+# this provides a shallow copy of the dict, it does not modify the 
+# original dict, but it creates a new dict which is filled with copy of
+# references from original dict
+new_dict = my_dict.copy()
+
+# fromkeys method creates a new dictionary from the given sequence of elements
+# with value provided by user. 
+new_dict = {}.fromkeys([1,2,3], [5,6])
+print(new_dict)
